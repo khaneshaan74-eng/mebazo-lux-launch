@@ -75,7 +75,7 @@ export function Waitlist() {
               />
               <button
                 type="submit"
-                className="border border-primary bg-primary px-6 py-4 text-[11px] uppercase tracking-[0.28em] text-primary-foreground transition-all duration-500 hover:scale-[1.04] hover:bg-transparent hover:text-primary hover:shadow-[0_0_40px_oklch(0.74_0.08_80/0.25)]"
+                className="btn-breathe border border-primary bg-primary px-6 py-4 text-[11px] uppercase tracking-[0.28em] text-primary-foreground transition-all duration-500 hover:scale-[1.04] hover:bg-transparent hover:text-primary hover:shadow-[0_0_40px_oklch(0.74_0.08_80/0.35)]"
               >
                 Reserve My Spot
               </button>
