@@ -129,8 +129,16 @@ html {
   50% { opacity: 0.9; transform: scale(1.05); }
 }
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+@keyframes btn-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.74 0.08 80 / 0); }
+  50% { box-shadow: 0 0 28px 2px oklch(0.74 0.08 80 / 0.35); }
+}
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0); box-shadow: 0 0 0 0 oklch(0.74 0.08 80 / 0); }
+  50% { transform: translateY(-3px); box-shadow: 0 0 18px 1px oklch(0.74 0.08 80 / 0.3); }
 }
 
 .particle {
