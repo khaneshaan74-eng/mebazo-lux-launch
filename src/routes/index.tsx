@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/mebazo/Hero";
-import { Recognition } from "@/components/mebazo/Recognition";
 import { Difference } from "@/components/mebazo/Difference";
-import { ProductTeaser } from "@/components/mebazo/ProductTeaser";
 import { Founder } from "@/components/mebazo/Founder";
 import { Waitlist } from "@/components/mebazo/Waitlist";
 import { Footer } from "@/components/mebazo/Footer";
@@ -34,9 +32,7 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
-      <Recognition />
       <Difference />
-      <ProductTeaser />
       <Founder />
       <Waitlist />
       <Footer />
