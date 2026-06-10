@@ -129,8 +129,16 @@ html {
   50% { opacity: 0.9; transform: scale(1.05); }
 }
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+@keyframes btn-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.74 0.08 80 / 0); }
+  50% { box-shadow: 0 0 28px 2px oklch(0.74 0.08 80 / 0.35); }
+}
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0); box-shadow: 0 0 0 0 oklch(0.74 0.08 80 / 0); }
+  50% { transform: translateY(-3px); box-shadow: 0 0 18px 1px oklch(0.74 0.08 80 / 0.3); }
 }
 
 .particle {
@@ -158,19 +166,30 @@ html {
   transform: translateY(0);
 }
 
-/* Logo shimmer — subtle gold sweep across the wordmark */
+/* Logo shimmer — gold sweep across the wordmark */
 .logo-shimmer {
-  background: linear-gradient(
-    110deg,
+  background-image: linear-gradient(
+    100deg,
     oklch(0.74 0.08 80) 0%,
-    oklch(0.9 0.06 80) 25%,
-    oklch(0.74 0.08 80) 50%,
-    oklch(0.9 0.06 80) 75%,
+    oklch(0.74 0.08 80) 35%,
+    oklch(0.98 0.05 90) 50%,
+    oklch(0.74 0.08 80) 65%,
     oklch(0.74 0.08 80) 100%
   );
-  background-size: 200% auto;
+  background-size: 250% 100%;
+  background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 5s linear infinite;
+  animation: shimmer 3.5s linear infinite;
 }
+
+.btn-breathe {
+  animation: btn-breathe 3s ease-in-out infinite;
+}
+.icon-float {
+  animation: icon-float 4s ease-in-out infinite;
+}
+.icon-float:nth-child(2) { animation-delay: 0.6s; }
+.icon-float:nth-child(3) { animation-delay: 1.2s; }
