@@ -48,7 +48,7 @@ export function Hero() {
 
         <Reveal delay={120}>
           <h1
-            className="font-serif text-primary"
+            className="logo-shimmer font-serif text-primary"
             style={{
               fontSize: "clamp(4rem, 14vw, 11rem)",
               lineHeight: 0.95,
