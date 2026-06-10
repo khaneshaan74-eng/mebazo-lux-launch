@@ -46,19 +46,17 @@ export function Hero() {
           </div>
         </Reveal>
 
-        <Reveal delay={120}>
-          <h1
-            className="logo-shimmer font-serif text-primary"
-            style={{
-              fontSize: "clamp(4rem, 14vw, 11rem)",
-              lineHeight: 0.95,
-              letterSpacing: "0.04em",
-              fontWeight: 300,
-            }}
-          >
-            MEBÁZO
-          </h1>
-        </Reveal>
+        <h1
+          className="logo-shimmer font-serif text-primary"
+          style={{
+            fontSize: "clamp(4rem, 14vw, 11rem)",
+            lineHeight: 0.95,
+            letterSpacing: "0.04em",
+            fontWeight: 300,
+          }}
+        >
+          MEBÁZO
+        </h1>
 
         <Reveal delay={260}>
           <p className="mt-8 font-serif text-2xl italic text-foreground/90 sm:text-3xl">
