@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import { Reveal } from "./Reveal";
+import { supabase } from "@/integrations/supabase/client";
 
 const schema = z.object({
   email: z
@@ -13,10 +14,10 @@ const schema = z.object({
 
 export function Waitlist() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
     const r = schema.safeParse({ email });
     if (!r.success) {
@@ -25,6 +26,16 @@ export function Waitlist() {
       return;
     }
     setError(null);
+    setStatus("submitting");
+    const normalized = r.data.email.toLowerCase();
+    const { error: insertError } = await supabase
+      .from("waitlist_signups")
+      .insert({ email: normalized });
+    if (insertError && insertError.code !== "23505") {
+      setError("Something went wrong. Please try again.");
+      setStatus("error");
+      return;
+    }
     setStatus("success");
   }
 
