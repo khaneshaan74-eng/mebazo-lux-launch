@@ -47,7 +47,7 @@ export function Hero() {
         </Reveal>
 
         <h1
-          className="font-serif text-primary logo-shimmer"
+          className="font-serif text-primary"
           style={{
             fontSize: "clamp(4rem, 14vw, 11rem)",
             lineHeight: 0.95,
