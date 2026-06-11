@@ -47,7 +47,7 @@ export function Hero() {
         </Reveal>
 
         <h1
-          className="font-serif text-primary"
+          className="font-serif text-primary logo-shimmer"
           style={{
             fontSize: "clamp(4rem, 14vw, 11rem)",
             lineHeight: 0.95,
@@ -73,7 +73,7 @@ export function Hero() {
         <Reveal delay={520}>
           <a
             href="#waitlist"
-            className="btn-breathe group mt-12 inline-flex items-center justify-center border border-primary px-10 py-4 text-[11px] uppercase tracking-[0.32em] text-primary transition-all duration-500 hover:scale-[1.04] hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_oklch(0.74_0.08_80/0.35)]"
+            className="group mt-12 inline-flex items-center justify-center border border-primary px-10 py-4 text-[11px] uppercase tracking-[0.32em] text-primary transition-all duration-500 hover:scale-[1.04] hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_oklch(0.74_0.08_80/0.35)]"
           >
             Join the Waitlist
           </a>
