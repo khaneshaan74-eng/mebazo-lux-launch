@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import { Reveal } from "./Reveal";
+import { supabase } from "@/integrations/supabase/client";
 
 const schema = z.object({
   email: z
@@ -13,10 +14,10 @@ const schema = z.object({
 
 export function Waitlist() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
     const r = schema.safeParse({ email });
     if (!r.success) {
@@ -25,6 +26,16 @@ export function Waitlist() {
       return;
     }
     setError(null);
+    setStatus("submitting");
+    const normalized = r.data.email.toLowerCase();
+    const { error: insertError } = await supabase
+      .from("waitlist_signups")
+      .insert({ email: normalized });
+    if (insertError && insertError.code !== "23505") {
+      setError("Something went wrong. Please try again.");
+      setStatus("error");
+      return;
+    }
     setStatus("success");
   }
 
@@ -75,9 +86,10 @@ export function Waitlist() {
               />
               <button
                 type="submit"
-                className="border border-primary bg-primary px-6 py-4 text-[11px] uppercase tracking-[0.28em] text-primary-foreground transition-all duration-500 hover:scale-[1.04] hover:bg-transparent hover:text-primary hover:shadow-[0_0_40px_oklch(0.74_0.08_80/0.35)]"
+                disabled={status === "submitting"}
+                className="border border-primary bg-primary px-6 py-4 text-[11px] uppercase tracking-[0.28em] text-primary-foreground transition-all duration-500 hover:scale-[1.04] hover:bg-transparent hover:text-primary hover:shadow-[0_0_40px_oklch(0.74_0.08_80/0.35)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
               >
-                Reserve My Spot
+                {status === "submitting" ? "Reserving…" : "Reserve My Spot"}
               </button>
             </form>
           )}
