@@ -132,6 +132,11 @@ html {
   0% { background-position: 200% center; }
   100% { background-position: -200% center; }
 }
+@keyframes shimmer-subtle {
+  0%, 35% { background-position: 200% center; }
+  50% { background-position: -200% center; }
+  65%, 100% { background-position: -200% center; }
+}
 @keyframes btn-breathe {
   0%, 100% { box-shadow: 0 0 0 0 oklch(0.74 0.08 80 / 0); }
   50% { box-shadow: 0 0 28px 2px oklch(0.74 0.08 80 / 0.35); }
@@ -166,14 +171,14 @@ html {
   transform: translateY(0);
 }
 
-/* Logo shimmer — gold sweep across the wordmark */
+/* Logo shimmer — occasional gold sweep across the wordmark */
 .logo-shimmer {
   background-image: linear-gradient(
     100deg,
     oklch(0.74 0.08 80) 0%,
-    oklch(0.74 0.08 80) 35%,
-    oklch(0.98 0.05 90) 50%,
-    oklch(0.74 0.08 80) 65%,
+    oklch(0.74 0.08 80) 42%,
+    oklch(0.85 0.07 81) 50%,
+    oklch(0.74 0.08 80) 58%,
     oklch(0.74 0.08 80) 100%
   );
   background-size: 250% 100%;
@@ -182,7 +187,7 @@ html {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 3.5s linear infinite;
+  animation: shimmer-subtle 10s ease-in-out infinite;
 }
 
 .btn-breathe {
